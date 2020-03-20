@@ -1,0 +1,10 @@
+.svg {
+  position: absolute;
+}
+
+.vote {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

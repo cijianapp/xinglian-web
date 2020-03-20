@@ -1,0 +1,91 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px 0;
+  background: var(--background-primary);
+  border-radius: 4px;
+  border: 1px solid var(--border-tertiary);
+  cursor: pointer;
+}
+
+.post:hover {
+  box-shadow: var(--elevation-medium);
+}
+
+.media {
+  width: 100%;
+  max-height: 480px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  object-fit: cover;
+}
+
+.textContainer {
+  padding: 0px 16px 8px;
+  text-align: justify;
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  overflow: hidden;
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.infoWrapper {
+  padding: 8px 12px 8px 16px;
+  border-top: 1px solid var(--border-tertiary);
+  display: flex;
+  flex-direction: row;
+}
+
+.userInfo {
+  margin-left: 5px;
+}
+
+.username {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-normal);
+}
+
+.timeInfo {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.guildInfo {
+  font-size: 12px;
+}
+
+.guildInfo::before {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: #72767d;
+  border-radius: 50%;
+  content: "";
+}
+
+.icons {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.number {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 24px;
+}

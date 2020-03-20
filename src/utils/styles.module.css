@@ -1,0 +1,56 @@
+.button_common {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2px 32px;
+  background-color: var(--button-primary);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button_common:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.button_green {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2px 32px;
+  background-color: var(--button-secondary);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button_green:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.input_normal {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: var(--text-input-bg);
+  color: var(--text-normal);
+  border: 1px solid var(--text-input-border);
+  border-radius: 4px;
+}
+
+.input_normal:hover {
+  border: 1px solid var(--text-input-border-hover);
+}
+
+.link_normal {
+  color: var(--link);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.link_normal:hover {
+  text-decoration: underline;
+}

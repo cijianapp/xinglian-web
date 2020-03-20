@@ -1,0 +1,80 @@
+.main {
+  position: absolute;
+  top: 48px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  overflow: hidden;
+  background-color: var(--background-tertiary);
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.homepage {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  max-width: 720px;
+  min-width: 360px;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  max-width: 320px;
+  min-width: 240px;
+  margin-left: 20px;
+}
+
+.guildCard {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  overflow: hidden;
+  background: var(--background-primary);
+  border-radius: 10px;
+  box-shadow: var(--elevation-low);
+  cursor: pointer;
+}
+
+.guildInfo {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 10px;
+  align-content: stretch;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 14px;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -24,9 +24,82 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React Redux App</title>
+    <title>间白 年轻人的社群平台</title>
+
+    <style>
+      .theme-light {
+        --header-primary: #060607;
+        --header-secondary: #4f5660;
+        --background-primary: #fff;
+        --background-secondary: #f2f3f5;
+        --background-tertiary: #e3e5e8;
+        --background-quaternary: #fafafa;
+        --panel-background: #ebedef;
+        --card-background: #fff;
+        --border-primary: rgba(0, 0, 0, 0.5);
+        --border-secondary: rgba(0, 0, 0, 0.3);
+        --border-tertiary: rgba(0, 0, 0, 0.1);
+        --text-strong: #000;
+        --text-normal: #23262a;
+        --text-muted: #2e3338;
+        --modal-background: rgba(0, 0, 0, 0.3);
+        --alert-primary: #f04747;
+        --text-input-bg: rgba(0, 0, 0, 0.1);
+        --text-input-border: rgba(0, 0, 0, 0.3);
+        --text-input-border-hover: #7289da;
+        --button-primary: #7289da;
+        --button-primary-hover: #677bc4;
+        --button-secondary: #3ca374;
+        --button-secondary-hover: #369368;
+        --link: #7289da;
+        --link-hover: #677bc4;
+        --logo-primary: #000;
+        --channels-default: #6a7480;
+        --interactive-normal: #4f5660;
+        --interactive-hover: #2e3338;
+        --interactive-active: #060607;
+        --background-modifier-selected: rgba(116, 127, 141, 0.24);
+        --background-modifier-hover: rgba(116, 127, 141, 0.24);
+        --elevation-low: 0 1px 0 rgba(6, 6, 7, 0.1),
+          0 1.5px 0 rgba(6, 6, 7, 0.025), 0 2px 0 rgba(6, 6, 7, 0.025);
+        --elevation-medium: 0 4px 4px rgba(0, 0, 0, 0.08);
+        --elevation-high: 0 16px 32px rgba(0, 0, 0, 0.64);
+      }
+    </style>
+
+    <script>
+      (function(d) {
+        var config = {
+            kitId: "wnr8lye",
+            scriptTimeout: 3000,
+            async: true
+          },
+          h = d.documentElement,
+          t = setTimeout(function() {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function() {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
   </head>
-  <body>
+  <body class="theme-light">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
