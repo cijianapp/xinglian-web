@@ -4,11 +4,11 @@ import styles from "./styles.module.css";
 import { Content } from "./content";
 import { Sidebar } from "./sidebar";
 
-export const Homepage = () => {
+export const Guildpage = () => {
   return (
     <div className={styles.homepage}>
-      <Content type="home"></Content>
-      <Sidebar type="home"></Sidebar>
+      <Content type="guild"></Content>
+      <Sidebar type="guild"></Sidebar>
     </div>
   );
 };

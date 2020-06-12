@@ -1,28 +1,27 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-
-import SimpleBar from "simplebar-react";
-import "simplebar/dist/simplebar.min.css";
+import { Switch, Route } from "react-router-dom";
 
 import { Homepage } from "./homepage";
 import { Postpage } from "../postpage";
+import { Guildpage } from "./guildpage";
 
 const Main = () => {
   return (
     <main className={styles.main}>
-      <SimpleBar className={styles.bar} forceVisible="y" autoHide={false}>
-        <Router>
-          <Switch>
-            <Route exact path="/:guildID/:postID">
-              <Postpage></Postpage>
-            </Route>
-            <Route path="/">
-              <Homepage></Homepage>
-            </Route>
-          </Switch>
-        </Router>
-      </SimpleBar>
+      <Switch>
+        <Route exact path="/:guildID/:postID">
+          <Postpage></Postpage>
+        </Route>
+
+        <Route exact path="/:guildID">
+          <Guildpage></Guildpage>
+        </Route>
+
+        <Route path="/">
+          <Homepage></Homepage>
+        </Route>
+      </Switch>
     </main>
   );
 };

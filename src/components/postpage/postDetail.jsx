@@ -21,7 +21,7 @@ export const PostDetail = () => {
   useEffect(() => {
     const source = Axios.CancelToken.source();
 
-    const getConfig = { withCredentials: true, params: { post: postID } };
+    const getConfig = { params: { post: postID } };
     Axios.get(baseURL + "guest/post", getConfig)
       .then(response => {
         setPost(response.data);

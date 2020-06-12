@@ -5,15 +5,14 @@ import ReactModal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
 
-import { openLoginControl, authActions } from "../../reducer/authSlice";
+import { openLoginControlSelector, authActions } from "../../reducer/authSlice";
+import { userActions } from "../../reducer/userSlice";
 import { baseURL } from "../../utils/http";
-
-Axios.defaults.withCredentials = true;
 
 export const LoginModal = () => {
   const [tel, setTel] = useState("");
   const [password, setPassword] = useState("");
-  const control = useSelector(openLoginControl);
+  const control = useSelector(openLoginControlSelector);
   const dispatch = useDispatch();
 
   function login(e) {
@@ -24,15 +23,13 @@ export const LoginModal = () => {
       password: password
     };
 
-    Axios.post(baseURL + "auth/login", loginParams, { withCredentials: true })
+    Axios.post(baseURL + "auth/login", loginParams)
       .then(function(response) {
         if (response.data.code === 200) {
-          //   dispatch({
-          //     type: SET_TOKEN,
-          //     value: response.data.token
-          //   });
-
+          dispatch(userActions.setToken(response.data.token));
+          localStorage.setItem("token", response.data.token);
           dispatch(authActions.login(true));
+          dispatch(authActions.toLogin(false));
         }
       })
       .catch(function(errors) {

@@ -3,10 +3,11 @@ import styles from "./styles.module.css";
 import { FiUser } from "react-icons/fi";
 
 import { ossURL } from "../../utils/http";
+import { Link } from "react-router-dom";
 
 export const GuildCard = ({ guild }) => {
   return (
-    <div className={styles.guildCard}>
+    <Link to={guild._id} className={styles.guildCard}>
       <img
         alt="avatar"
         style={{
@@ -19,10 +20,13 @@ export const GuildCard = ({ guild }) => {
       ></img>
       <div className={styles.guildInfo}>
         <div className={styles.infoContainer}>
-          <div style={{ fontWeight: "bold" }}>{guild.name}</div>
+          <div style={{ color: "var(--text-strong)", fontWeight: "bold" }}>
+            {guild.name}
+          </div>
 
           <div
             style={{
+              color: "#000",
               display: "flex",
               alignItems: "center"
             }}
@@ -43,6 +47,6 @@ export const GuildCard = ({ guild }) => {
 
         <div className={styles.description}>{guild.description}</div>
       </div>
-    </div>
+    </Link>
   );
 };

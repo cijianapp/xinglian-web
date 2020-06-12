@@ -45,7 +45,10 @@ export const Post = ({ post }) => {
   }
 
   return (
-    <Link to={"/" + post.guild + "/" + post._id}>
+    <Link
+      style={{ textDecoration: "none" }}
+      to={"/" + post.guild + "/" + post._id}
+    >
       <div className={styles.post}>
         {media}
         <div className={styles.textContainer}>

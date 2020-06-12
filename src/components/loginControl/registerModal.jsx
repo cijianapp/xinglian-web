@@ -4,14 +4,17 @@ import commonStyles from "../../utils/styles.module.css";
 import ReactModal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
 
-import { openRegisterControl, authActions } from "../../reducer/authSlice";
+import {
+  openRegisterControlSelector,
+  authActions
+} from "../../reducer/authSlice";
 
 export const RegisterModal = () => {
   const [tel, setTel] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsernamme] = useState("");
 
-  const control = useSelector(openRegisterControl);
+  const control = useSelector(openRegisterControlSelector);
   const dispatch = useDispatch();
 
   return (

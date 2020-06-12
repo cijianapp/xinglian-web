@@ -1,28 +1,45 @@
 import React from "react";
 import styles from "./styles.module.css";
 import ReactTooltip from "react-tooltip";
-import { useSelector } from "react-redux";
-import { FiHome, FiChevronDown } from "react-icons/fi";
+import { useSelector, useDispatch } from "react-redux";
+import { FiChevronDown } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 
 import { infoSelector } from "../../reducer/userSlice";
 import { Avatar } from "../collections";
-import { useParams, Link } from "react-router-dom";
+import { guildSelector, submitActions } from "../../reducer/submitSlice";
 
 export const GuildList = () => {
   const info = useSelector(infoSelector);
+  let guild = useSelector(guildSelector);
+
   const { guildID } = useParams();
 
   let guilds = [];
-  let guildcurrent = { name: "home" };
-
-  guilds.push(<Guild key="home" guild={{ name: "home" }}></Guild>);
+  let joined = false;
 
   if (Array.isArray(info.guild)) {
     info.guild.forEach(element => {
       guilds.push(<Guild key={element._id} guild={element}></Guild>);
 
-      if (element._id === guildID) guildcurrent = element;
+      if (guildID === element._id) {
+        guild = element;
+        joined = true;
+      }
     });
+  }
+
+  if (guildID !== undefined) {
+    if (joined) {
+      return (
+        <div className={styles.guildList}>
+          <GuildCurrent guild={guild}></GuildCurrent>
+          <FiChevronDown></FiChevronDown>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 
   return (
@@ -30,14 +47,14 @@ export const GuildList = () => {
       <div
         className={styles.guildList}
         data-tip
-        data-for="guild-list"
+        data-for="guild-submit"
         data-event="click"
       >
-        <GuildCurrent guild={guildcurrent}></GuildCurrent>
+        <GuildCurrent guild={guild}></GuildCurrent>
         <FiChevronDown></FiChevronDown>
       </div>
       <ReactTooltip
-        id="guild-list"
+        id="guild-submit"
         place="bottom"
         type="dark"
         effect="solid"
@@ -45,7 +62,7 @@ export const GuildList = () => {
         eventOff="dbclick"
         clickable={true}
         className={styles.tooltips}
-        offset={{ top: 5 }}
+        offset={{ top: 10 }}
       >
         {guilds}
       </ReactTooltip>
@@ -54,43 +71,36 @@ export const GuildList = () => {
 };
 
 export const Guild = ({ guild }) => {
-  if (guild.name === "home")
-    return (
-      <Link to="/" className={styles.guild}>
-        <FiHome size={20} style={{ padding: "2px" }} color="#000"></FiHome>
-        <div style={{ color: "#000", marginLeft: "5px", fontSize: "14px" }}>
-          主页
-        </div>
-      </Link>
-    );
+  const dispatch = useDispatch();
 
   return (
-    <Link to={guild._id} className={styles.guild}>
+    <div
+      to={guild._id}
+      className={styles.guild}
+      onClick={() => {
+        dispatch(submitActions.toGuild(guild));
+      }}
+    >
       <Avatar size={24} url={guild.avatar}></Avatar>
       <div style={{ color: "#000", marginLeft: "5px", fontSize: "14px" }}>
         {guild.name}
       </div>
-    </Link>
+    </div>
   );
 };
 
 export const GuildCurrent = ({ guild }) => {
-  if (guild.name === "home")
+  if (guild.name === "none")
     return (
       <div className={styles.guildCurrent}>
-        <FiHome size={20} style={{ padding: "2px" }} color="#000"></FiHome>
-        <div style={{ color: "#000", marginLeft: "5px", fontSize: "14px" }}>
-          主页
-        </div>
+        <div style={{ marginLeft: "5px", fontSize: "14px" }}>选择社区</div>
       </div>
     );
 
   return (
     <div className={styles.guildCurrent}>
       <Avatar size={22} url={guild.avatar}></Avatar>
-      <div style={{ color: "#000", marginLeft: "5px", fontSize: "14px" }}>
-        {guild.name}
-      </div>
+      <div style={{ marginLeft: "5px", fontSize: "14px" }}>{guild.name}</div>
     </div>
   );
 };

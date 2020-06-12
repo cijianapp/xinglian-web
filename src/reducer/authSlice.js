@@ -20,9 +20,10 @@ export const slice = createSlice({
   }
 });
 
-export const openLoginControl = state => state.auth.openLoginControl;
-export const openRegisterControl = state => state.auth.openRegisterControl;
-export const logged = state => state.auth.logged;
+export const openLoginControlSelector = state => state.auth.openLoginControl;
+export const openRegisterControlSelector = state =>
+  state.auth.openRegisterControl;
+export const loggedSelector = state => state.auth.logged;
 export const authActions = slice.actions;
 
 export default slice.reducer;
