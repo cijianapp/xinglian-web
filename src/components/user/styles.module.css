@@ -3,4 +3,22 @@
   flex-direction: row;
   align-items: center;
   padding: 0 10px;
+  cursor: pointer;
+}
+
+.tooltips {
+  width: 100px;
+  padding: 0 !important;
+  box-sizing: border-box;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  box-shadow: var(--elevation-high) !important;
+  border: 1px solid var(--border-secondary) !important;
+}
+/* .tooltips::before {
+  border: none !important;
+} */
+
+.tooltips::after {
+  border: none !important;
 }
